@@ -49,7 +49,7 @@ while data_packet_num <= max_data_packet_num:
     
     serial_num_str = str(serial_num)[-5:]
     
-     ## if there is enough data to create two data packets. This creates the commmand and adds it to RPCcommands.txt.
+     ## if there is enough data to create one data packet. This creates the commmand and adds it to RPCcommands.txt.
     if data_packet_num==max_data_packet_num:
         arguments = [maddress, 1, 1, 0, data_list[data_packet_num], "", name+file_type+serial_num_str, "", "", "1"]
         rpc_command = rpc_connection.omni_sendissuancefixed(arguments)
