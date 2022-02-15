@@ -90,5 +90,5 @@ while data_packet_num <= max_data_packet_num:
         print(serial_num)
         serial_num += 1
         data_packet_num += 4
-        await rpc_command()
+        await rpc_command() ##hoping to use await to wait for return of the TXid number.
 
