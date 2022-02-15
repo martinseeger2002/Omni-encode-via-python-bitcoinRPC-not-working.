@@ -43,7 +43,7 @@ max_data_packet_num = (len(data_list)-1)
 
 """
 below here is broken!! maybe someome can help I am atempting to insert the data packet into the four fields in the omni
-command and run the comanned though the RPC. I need to figire out how to replace the (') in the arguments list with (")
+command and run the comanned though the RPC.
 """
 {"jsonrpc": "1.0", "id":"curltest", "method": "omni_sendissuancefixed", "params": ["3Ck2kEGLJtZw9ENj2tameMCtS3HB7uRar3", 2, 1, 0, "Companies", "Litecoin Mining", "Quantum Miner", "", "", "1000000"] }
 while data_packet_num <= max_data_packet_num:
@@ -54,8 +54,10 @@ while data_packet_num <= max_data_packet_num:
     if data_packet_num==max_data_packet_num:
         d1 = data_list[data_packet_num]
         arguments = [maddress, 1, 1, 0, d1, "", name+file_type+serial_num_str, "", "", "1"]
-        rpc_command = rpc_connection.omni_sendissuancefixed(arguments)
-        print(arguments)
+        arguments_str = str(arguments)
+        arguments_quotes = arguments_str[1:-1].replace("'", '"')
+        #rpc_command = rpc_connection.omni_sendissuancefixed(arguments_quotes)      # remove the "#" when fixed.
+        print(arguments_quotes)
         add_to_output_txt()
         print(serial_num)
         exit()    
@@ -64,8 +66,10 @@ while data_packet_num <= max_data_packet_num:
         d1 = data_list[data_packet_num]
         d2 = data_list[data_packet_num+1]
         arguments = [maddress, 1, 1, 0, d1, d2, name+file_type+serial_num_str, "", "", "1"]
-        rpc_command = rpc_connection.omni_sendissuancefixed(arguments)
-        print(arguments)
+        arguments_str = str(arguments)
+        arguments_quotes = arguments_str[1:-1].replace("'", '"')
+        #rpc_command = rpc_connection.omni_sendissuancefixed(arguments_quotes)      # remove the "#" when fixed.
+        print(arguments_quotes)
         add_to_output_txt()
         print(serial_num)
         exit()
@@ -75,8 +79,10 @@ while data_packet_num <= max_data_packet_num:
         d2 = data_list[data_packet_num+1]
         d3 = data_list[data_packet_num+2]
         arguments = [maddress, 1, 1, 0, d1, d2, name+file_type+serial_num_str, d3, "", "1"]
-        rpc_command = rpc_connection.omni_sendissuancefixed(arguments)
-        print(arguments)
+        arguments_str = str(arguments)
+        arguments_quotes = arguments_str[1:-1].replace("'", '"')
+        #rpc_command = rpc_connection.omni_sendissuancefixed(arguments_quotes)      # remove the "#" when fixed.
+        print(arguments_quotes)
         add_to_output_txt()
         print(serial_num)
         exit()    
@@ -87,8 +93,10 @@ while data_packet_num <= max_data_packet_num:
         d3 = data_list[data_packet_num+2]        
         d4 = data_list[data_packet_num+3] 
         arguments = [maddress, 1, 1, 0, d1, d2, name+file_type+serial_num_str, d3, d4, "1"]
-        rpc_command = rpc_connection.omni_sendissuancefixed(arguments)
-        print(arguments)
+        arguments_str = str(arguments)
+        arguments_quotes = arguments_str[1:-1].replace("'", '"')
+        #rpc_command = rpc_connection.omni_sendissuancefixed(arguments_quotes)      # remove the "#" when fixed.
+        print(arguments_quotes)
         add_to_output_txt()
         print(serial_num)
         exit()  
@@ -99,13 +107,14 @@ while data_packet_num <= max_data_packet_num:
         d3 = data_list[data_packet_num+2]        
         d4 = data_list[data_packet_num+3] 
         arguments = [maddress, 1, 1, 0, d1, d2, name+file_type+serial_num_str, d3, d4, "1"]
-        rpc_command = rpc_connection.omni_sendissuancefixed(arguments)
-        print(arguments)
+        arguments_str = str(arguments)
+        arguments_quotes = arguments_str[1:-1].replace("'", '"')
+        #rpc_connection.omni_sendissuancefixed(arguments_quotes)        #I dont know why its not working the arguments seen to be in the corret format.
+        print(arguments_quotes)
         add_to_output_txt()
         print(serial_num)
         serial_num += 1
         data_packet_num += 4
-        time.sleep(0.4)
-        #await rpc_command.omni_sendissuancefixed("hash")  #maybe the await can wait for txid hash string return?
-
+        
+       ##await rpc_command.omni_sendissuancefixed("hash")       #maybe the await can wait for txid hash string return
 
