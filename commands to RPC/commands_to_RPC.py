@@ -1,6 +1,6 @@
 import time
 
-"""
+
 from bitcoinrpc.authproxy import AuthServiceProxy, JSONRPCException
 
 # rpc_user and rpc_password are set in the litecoin.conf file
@@ -8,7 +8,7 @@ rpc_user = 'user'
 rpc_password = 'password'
 
 rpc_connection = AuthServiceProxy("http://%s:%s@127.0.0.1:9332"%(rpc_user, rpc_password))
-"""
+
 
 ##converts image.jpeg to b64 byte string
 import base64
@@ -24,7 +24,7 @@ data_list = [data[index : index + n] for index in range(0, len(data), n)]
 ##adds to RPCcommands.txt
 def add_to_output_txt():
     f = open('arguments.txt', 'a+')
-    arguments_str = str(arguments)[1:1]
+    arguments_str = str(arguments)
     f.write(str(arguments_str+'\n\n'))
     f.close()
 
@@ -43,7 +43,7 @@ max_data_packet_num = (len(data_list)-1)
 
 """
 below here is broken!! maybe someome can help I am atempting to insert the data packet into the four fields in the omni
-command and run the comanned though the RPC. I need to replace the (') in the arguments list with (") and I think the command will work. 
+command and run the comanned though the RPC. I need to figire out how to replace the (') in the arguments list with (")
 """
 {"jsonrpc": "1.0", "id":"curltest", "method": "omni_sendissuancefixed", "params": ["3Ck2kEGLJtZw9ENj2tameMCtS3HB7uRar3", 2, 1, 0, "Companies", "Litecoin Mining", "Quantum Miner", "", "", "1000000"] }
 while data_packet_num <= max_data_packet_num:
@@ -54,7 +54,7 @@ while data_packet_num <= max_data_packet_num:
     if data_packet_num==max_data_packet_num:
         d1 = data_list[data_packet_num]
         arguments = [maddress, 1, 1, 0, d1, "", name+file_type+serial_num_str, "", "", "1"]
-        ##rpc_command = rpc_connection.omni_sendissuancefixed(arguments)
+        rpc_command = rpc_connection.omni_sendissuancefixed(arguments)
         print(arguments)
         add_to_output_txt()
         print(serial_num)
@@ -64,7 +64,7 @@ while data_packet_num <= max_data_packet_num:
         d1 = data_list[data_packet_num]
         d2 = data_list[data_packet_num+1]
         arguments = [maddress, 1, 1, 0, d1, d2, name+file_type+serial_num_str, "", "", "1"]
-        ##rpc_command = rpc_connection.omni_sendissuancefixed()
+        rpc_command = rpc_connection.omni_sendissuancefixed(arguments)
         print(arguments)
         add_to_output_txt()
         print(serial_num)
@@ -75,7 +75,7 @@ while data_packet_num <= max_data_packet_num:
         d2 = data_list[data_packet_num+1]
         d3 = data_list[data_packet_num+2]
         arguments = [maddress, 1, 1, 0, d1, d2, name+file_type+serial_num_str, d3, "", "1"]
-       ##rpc_command = rpc_connection.omni_sendissuancefixed(arguments)
+        rpc_command = rpc_connection.omni_sendissuancefixed(arguments)
         print(arguments)
         add_to_output_txt()
         print(serial_num)
@@ -87,7 +87,7 @@ while data_packet_num <= max_data_packet_num:
         d3 = data_list[data_packet_num+2]        
         d4 = data_list[data_packet_num+3] 
         arguments = [maddress, 1, 1, 0, d1, d2, name+file_type+serial_num_str, d3, d4, "1"]
-        ##rpc_command = rpc_connection.omni_sendissuancefixed(arguments)
+        rpc_command = rpc_connection.omni_sendissuancefixed(arguments)
         print(arguments)
         add_to_output_txt()
         print(serial_num)
@@ -99,11 +99,13 @@ while data_packet_num <= max_data_packet_num:
         d3 = data_list[data_packet_num+2]        
         d4 = data_list[data_packet_num+3] 
         arguments = [maddress, 1, 1, 0, d1, d2, name+file_type+serial_num_str, d3, d4, "1"]
-        ##rpc_command = rpc_connection.omni_sendissuancefixed(arguments)
+        rpc_command = rpc_connection.omni_sendissuancefixed(arguments)
         print(arguments)
         add_to_output_txt()
         print(serial_num)
         serial_num += 1
         data_packet_num += 4
-        #await rpc_command.omni_sendissuancefixed("hash")
+        time.sleep(0.4)
+        #await rpc_command.omni_sendissuancefixed("hash")  #maybe the await can wait for txid hash string return?
+
 
