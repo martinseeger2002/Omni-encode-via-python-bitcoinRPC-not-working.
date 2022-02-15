@@ -56,7 +56,7 @@ while data_packet_num <= max_data_packet_num:
         arguments = [maddress, 1, 1, 0, d1, "", name+file_type+serial_num_str, "", "", "1"]
         arguments_str = str(arguments)
         arguments_quotes = arguments_str[1:-1].replace("'", '"')
-        #rpc_command = rpc_connection.omni_sendissuancefixed(arguments_quotes)      # remove the "#" when fixed.
+        #rpc_connection.omni_sendissuancefixed(arguments_quotes)      # remove the "#" when fixed.
         print(arguments_quotes)
         add_to_output_txt()
         print(serial_num)
@@ -68,7 +68,7 @@ while data_packet_num <= max_data_packet_num:
         arguments = [maddress, 1, 1, 0, d1, d2, name+file_type+serial_num_str, "", "", "1"]
         arguments_str = str(arguments)
         arguments_quotes = arguments_str[1:-1].replace("'", '"')
-        #rpc_command = rpc_connection.omni_sendissuancefixed(arguments_quotes)      # remove the "#" when fixed.
+        #rpc_connection.omni_sendissuancefixed(arguments_quotes)      # remove the "#" when fixed.
         print(arguments_quotes)
         add_to_output_txt()
         print(serial_num)
@@ -81,7 +81,7 @@ while data_packet_num <= max_data_packet_num:
         arguments = [maddress, 1, 1, 0, d1, d2, name+file_type+serial_num_str, d3, "", "1"]
         arguments_str = str(arguments)
         arguments_quotes = arguments_str[1:-1].replace("'", '"')
-        #rpc_command = rpc_connection.omni_sendissuancefixed(arguments_quotes)      # remove the "#" when fixed.
+        #rpc_connection.omni_sendissuancefixed(arguments_quotes)      # remove the "#" when fixed.
         print(arguments_quotes)
         add_to_output_txt()
         print(serial_num)
@@ -95,7 +95,7 @@ while data_packet_num <= max_data_packet_num:
         arguments = [maddress, 1, 1, 0, d1, d2, name+file_type+serial_num_str, d3, d4, "1"]
         arguments_str = str(arguments)
         arguments_quotes = arguments_str[1:-1].replace("'", '"')
-        #rpc_command = rpc_connection.omni_sendissuancefixed(arguments_quotes)      # remove the "#" when fixed.
+        #rpc_connection.omni_sendissuancefixed(arguments_quotes)      # remove the "#" when fixed.
         print(arguments_quotes)
         add_to_output_txt()
         print(serial_num)
