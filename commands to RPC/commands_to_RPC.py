@@ -115,6 +115,6 @@ while data_packet_num <= max_data_packet_num:
         print(serial_num)
         serial_num += 1
         data_packet_num += 4
-        
+        time.sleep(0.4)
        ##await rpc_command.omni_sendissuancefixed("hash")       #maybe the await can wait for txid hash string return
 
