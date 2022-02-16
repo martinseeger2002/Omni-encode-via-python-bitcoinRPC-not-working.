@@ -24,8 +24,7 @@ data_list = [data[index : index + n] for index in range(0, len(data), n)]
 ##adds to RPCcommands.txt
 def add_to_output_txt():
     f = open('arguments.txt', 'a+')
-    arguments_str = str(arguments)
-    f.write(str(arguments_str+'\n\n'))
+    f.write(str(arguments_quotes+'\n\n'))
     f.close()
 
 ##creates RPCcommands.txt
