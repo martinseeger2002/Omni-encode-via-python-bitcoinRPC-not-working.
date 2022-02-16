@@ -44,7 +44,7 @@ max_data_packet_num = (len(data_list)-1)
 below here is broken!! maybe someome can help I am atempting to insert the data packet into the four fields in the omni
 command and run the comanned though the RPC.
 """
-{"jsonrpc": "1.0", "id":"curltest", "method": "omni_sendissuancefixed", "params": ["3Ck2kEGLJtZw9ENj2tameMCtS3HB7uRar3", 2, 1, 0, "Companies", "Litecoin Mining", "Quantum Miner", "", "", "1000000"] }
+
 while data_packet_num <= max_data_packet_num:
     
     serial_num_str = str(serial_num)[-5:]
